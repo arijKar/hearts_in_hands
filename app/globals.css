@@ -1,4 +1,10 @@
 /* === Palette & fonts === */
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 :root{
   --pink: #F88BA0;
   --deep-red: #B1363B;

@@ -91,6 +91,7 @@ export default function Page() {
               from food & essentials to student mentorship and cultural programming that honours
               Palestinian heritage and the diversity of our community.
             </p>
+
             <ul style={{ marginTop: '.75rem', paddingLeft: '1.25rem' }}>
               <li>Student & newcomer support</li>
               <li>Family essentials & dignity kits</li>
@@ -266,7 +267,7 @@ export default function Page() {
                 name: 'Arij Karoui',
                 role: 'Web Developer',
                 desc:
-                  'I’m Arij Karoui, a third-year Computer Science student who joined Hearts in Hands to spread good vibes and give back. I love hanging with my family and getting lost in a good book.',
+                  'Hi! I’m Arij, a third-year Computer Science student. As a Tunisian who grew up in Canada, I understand what it’s like to build a sense of home in a new place, and I want to help children feel that same comfort here too. I also love spending time with my family and getting lost in a good book.',
               },
               {
                 name: 'Usva',
