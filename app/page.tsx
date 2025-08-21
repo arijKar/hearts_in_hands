@@ -19,7 +19,7 @@ export default function Page() {
           <a href="#" className="brand" style={{ textDecoration: 'none' }}>
             <div className="brand-badge" style={{ background: 'none', borderRadius: 0 }}>
               <img
-                src="/hearts in hands.png"
+                src="/hearts-in-hands.png"
                 alt="Hearts in Hands logo"
                 style={{ width: '60px', height: '46px', objectFit: 'contain' }}
               />
@@ -70,7 +70,7 @@ export default function Page() {
             <div className="logo-ring">
               <div className="logo-inner">
                 <img
-                  src="/hearts in hands.png"
+                  src="/hearts-in-hands.png"
                   alt="Hearts in Hands logo"
                   style={{ width: '220px', height: '230px', objectFit: 'contain' }}
                 />
@@ -195,7 +195,7 @@ export default function Page() {
             </div>
 
             <div>
-              <h3 className="h3" style={{ margin: 0 }}>Yasmine</h3>
+              <h3 className="h3" style={{ margin: 0 }}>Yasmine Yassine</h3>
               <p style={{ marginTop: '.5rem' }}>
                 Hi. I'm Yasmine, a 3rd year Translational and Molecular Medicine student at the
                 University of Ottawa. Growing up, I spent my summers visiting my family in Palestinian
@@ -222,7 +222,7 @@ export default function Page() {
             }}
           >
             <div>
-              <h3 className="h3" style={{ margin: 0 }}>Jenna</h3>
+              <h3 className="h3" style={{ margin: 0 }}>Jenna Abu-Dieh</h3>
               <p style={{ marginTop: '.5rem' }}>
                 Hi, my name is Jenna, and I’m in my third year at the University of Ottawa. Growing up,
                 I never had the chance to visit my home country, Palestine. I came to know it through the
@@ -253,70 +253,71 @@ export default function Page() {
 
           {/* Team grid (centered cards) */}
           <div
-            className="grid"
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+        gap: '1rem',
+        marginTop: '1rem',
+        placeItems: 'center',
+      }}
+    >
+      {[
+        {
+          name: 'Arij Karoui',
+          role: 'Web Developer',
+          desc: "Hi! I'm Arij, a third-year Computer Science student.As a Tunisian who grew up in Canada, I understand what it's like to build a sense ofhome in a new place, and I want to help children feel that same comfort here too. I also love spending time with my family and getting lost in a good book."
+        },
+        {
+          name: 'Usva',
+          role: 'Social media manager',
+          desc: "Hi! I'm Usva & I'm a third year biomedical science student. I joined HIH to give back in a meaningful way and help spread positivity and support for those who need it most!Besides school I enjoy baking, painting & going on long walks."
+        },
+        {
+          name: 'Salma',
+          role: 'Event coordinator',
+          desc: "Hi! I'm a fourth-year Biomedical Science student at the University of Ottawa.When I'm not in lectures or hitting the books, I love exploring cozy cafes with a good read in hand. I'm also a big fan of jasmine milk tea and can never resist a goodK-drama binge ;)"
+        },
+        {
+          name: 'Heba',
+          role: 'Volunteer coordinator',
+          desc: 'tbd',
+        },
+      ].map((m) => (
+        <div
+          key={m.name}
+          className="card"
+          style={{
+            display: 'grid',
+            gap: '.5rem',
+            maxWidth: '280px',
+            justifyItems: 'center',
+            textAlign: 'center',
+          }}
+        >
+          <div
             style={{
-              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-              gap: '1rem',
-              marginTop: '1rem',
-              justifyContent: 'center',
-              justifyItems: 'center',
+              width: '100%',
+              aspectRatio: '1 / 1',
+              background: 'var(--cream)',
+              border: '1px solid #e6d3d9',
+              borderRadius: '12px',
+              display: 'grid',
+              placeItems: 'center',
             }}
           >
-            {[
-              {
-                name: 'Arij Karoui',
-                role: 'Web Developer',
-                desc:
-                  'Hi! I’m Arij, a third-year Computer Science student. As a Tunisian who grew up in Canada, I understand what it’s like to build a sense of home in a new place, and I want to help children feel that same comfort here too. I also love spending time with my family and getting lost in a good book.',
-              },
-              {
-                name: 'Usva',
-                role: 'Social media',
-                desc:
-                  'Hi! I’m Usva & I’m a third year biomedical science student. I joined HIH to give back in a meaningful way and help spread positivity and support for those who need it most! Besides school I enjoy baking, painting & going on long walks.',
-              },
-              {
-                name: 'Salma',
-                role: 'Event planner',
-                desc:
-                  'Hi! I’m a fourth-year Biomedical Science student at the University of Ottawa. When I’m not in lectures or hitting the books, I love exploring cozy cafes with a good read in hand. I’m also a big fan of jasmine milk tea and can never resist a good K-drama binge ;)',
-              },
-            ].map((m) => (
-              <div
-                key={m.name}
-                className="card"
-                style={{
-                  display: 'grid',
-                  gap: '.5rem',
-                  maxWidth: '280px',
-                  justifyItems: 'center',
-                  textAlign: 'center',
-                }}
-              >
-                <div
-                  style={{
-                    width: '100%',
-                    aspectRatio: '1 / 1',
-                    background: 'var(--cream)',
-                    border: '1px solid #e6d3d9',
-                    borderRadius: '12px',
-                    display: 'grid',
-                    placeItems: 'center',
-                  }}
-                >
-                  {/* Replace with <img src="/team/arij.jpg" alt="Arij Karoui" .../> etc. */}
-                  <span style={{ opacity: 0.6 }}>Pic</span>
-                </div>
-
-                <div>
-                  <strong style={{ display: 'block' }}>{m.name}</strong>
-                  <span style={{ display: 'block', opacity: 0.8 }}>{m.role}</span>
-                  <p style={{ marginTop: '.35rem' }}>{m.desc}</p>
-                </div>
-              </div>
-            ))}
+            <span style={{ opacity: 0.6 }}>Pic</span>
+          </div>
+          <div>
+            <strong style={{ display: 'block' }}>{m.name}</strong>
+            <span style={{ display: 'block', opacity: 0.8 }}>{m.role}</span>
+            <p style={{ marginTop: '.35rem' }}>{m.desc}</p>
           </div>
         </div>
+      ))}
+    </div>
+
+</div>
+
       </section>
 
       {/* ===== Get Involved ===== */}
