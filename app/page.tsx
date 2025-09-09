@@ -1,127 +1,261 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function Page() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <div>
+    <div className="min-h-screen bg-[var(--beige)] text-[var(--dark-olive)]">
       {/* ===== Header ===== */}
-      <header className="header">
-        <div
-          className="container"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            padding: '0.9rem 1rem',
-          }}
+      <header className="w-full sticky top-0 z-50 bg-white/70 backdrop-blur-md border-b border-[#e6d3d9]/60 shadow-sm
+                   h-12 sm:h-14 md:h-16 lg:h-20">
+  <div className="site-container max-w-6xl flex items-center justify-between h-full
+                  px-2 sm:px-3 md:px-4">
+    {/* Brand */}
+    <a href="#" className="flex items-center gap-2 sm:gap-2.5 no-underline outline-none group">
+      <img
+        src="/hearts-in-hands.png"
+        alt="Hearts in Hands logo"
+        className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-10 lg:h-10
+                   object-contain rounded-lg ring-1 ring-[#e6d3d9]/60 group-hover:scale-105 transition-transform"
+      />
+      <span className="font-extrabold text-sm sm:text-base md:text-lg lg:text-xl
+                       text-[var(--burgundy)] tracking-tight group-hover:opacity-90">
+        Hearts In Hands
+      </span>
+    </a>
+
+    {/* Desktop Nav */}
+    <nav className="hidden md:flex items-center gap-3 lg:gap-5 text-xs lg:text-sm font-medium">
+      <a href="#mission" className="hover:text-[var(--burgundy)] transition-colors">Mission</a>
+      <a href="#team" className="hover:text-[var(--burgundy)] transition-colors">Our team</a>
+      <a href="#events" className="hover:text-[var(--burgundy)] transition-colors">Events</a>
+      <a href="#involved" className="hover:text-[var(--burgundy)] transition-colors">Get Involved</a>
+      <a href="#contact" className="hover:text-[var(--burgundy)] transition-colors">Contact</a>
+    </nav>
+
+    {/* Donate */}
+    <div className="hidden md:flex">
+      <a
+        className="btn btn-olive inline-flex items-center justify-center
+                   px-2.5 py-1 text-xs rounded-lg shadow-sm
+                   sm:px-3 sm:py-1.5 sm:text-sm
+                   lg:px-4 lg:py-2
+                   hover:shadow-md hover:-translate-y-0.5 transition-all"
+        href="https://www.gofundme.com/f/help-us-raise-money-to-help-refugees-in-ottawa"
+      >
+        DONATE
+      </a>
+    </div>
+
+    {/* Mobile hamburger */}
+    <button
+      className="md:hidden inline-flex items-center justify-center rounded-lg
+                 px-2 py-1 sm:px-2.5 sm:py-1.5 bg-[var(--olive)] text-white"
+      onClick={() => setOpen(!open)}
+      aria-label="Open menu"
+    >
+      ☰
+    </button>
+  </div>
+
+  {/* Mobile Menu (compact, only affects height on mobile when open) */}
+  <div
+    className={[
+      "md:hidden border-t border-[#e6d3d9] bg-white origin-top overflow-hidden transition-transform duration-200",
+      open ? "grid scale-y-100 opacity-100" : "grid scale-y-0 opacity-0 pointer-events-none",
+    ].join(" ")}
+  >
+    <div className="site-container max-w-6xl px-3 py-2 sm:px-4 sm:py-3 grid gap-2 sm:gap-3 text-sm">
+      <a href="#mission" className="py-0.5" onClick={() => setOpen(false)}>Mission</a>
+      <a href="#team" className="py-0.5" onClick={() => setOpen(false)}>Our team</a>
+      <a href="#events" className="py-0.5" onClick={() => setOpen(false)}>Events</a>
+      <a href="#involved" className="py-0.5" onClick={() => setOpen(false)}>Get Involved</a>
+      <a href="#contact" className="py-0.5" onClick={() => setOpen(false)}>Contact</a>
+      <a
+        className="btn btn-olive inline-flex items-center justify-center px-3 py-1.5 rounded-lg mt-1 text-sm shadow-sm hover:shadow-md transition-all"
+        href="https://www.gofundme.com/f/help-us-raise-money-to-help-refugees-in-ottawa"
+      >
+        DONATE
+      </a>
+    </div>
+  </div>
+</header>
+
+
+   
+    
+{/* ===== Hero ===== */}
+<section
+  id="home"
+  className="relative overflow-hidden py-10 sm:py-12 md:py-16 bg-[var(--cream)]"
+>
+  {/* background accents */}
+  <div className="absolute inset-0 -z-10 pointer-events-none">
+    {/* soft blobs */}
+    <div className="absolute -top-28 -left-24 w-80 h-80 rounded-full bg-[var(--pink)]/20 blur-3xl" />
+    <div className="absolute -bottom-28 -right-24 w-96 h-96 rounded-full bg-[var(--olive)]/20 blur-3xl" />
+    {/* dotted grid (a touch softer) */}
+    <div className="absolute inset-0 opacity-[0.12] [background-image:radial-gradient(#ffffff80_1px,transparent_1px)] [background-size:20px_20px]" />
+  </div>
+
+  <div className="site-container max-w-6xl grid grid-cols-1 md:grid-cols-2 items-center gap-8 px-4">
+    {/* copy */}
+    <div>
+      <span className="inline-block rounded-full px-3 py-1 text-xs md:text-sm font-semibold bg-[var(--pink)]/90 text-white shadow-sm ring-1 ring-white/60">
+        Community • Dignity • Care
+      </span>
+
+      {/* gradient: burgundy -> light pink */}
+      <h1 className="text-3xl md:text-5xl font-extrabold mt-3 leading-tight
+                     bg-gradient-to-r from-[var(--burgundy)] via-[var(--deep-red)]/60 to-[var(--pink)]
+                     bg-clip-text text-transparent">
+        Holding hearts, lending hands.
+      </h1>
+
+      <p className="mt-4 leading-relaxed text-[var(--dark-olive)]/90 max-w-prose">
+        Hearts In Hands supports families, students and newcomers with practical help,
+        cultural celebration, and community led events rooted in compassion.
+      </p>
+
+      <div className="mt-4 flex flex-wrap gap-3">
+        <a
+          href="#involved"
+          className="btn btn-olive px-4 py-2 rounded-xl shadow hover:shadow-md hover:-translate-y-0.5 transition-all"
         >
-          <a href="#" className="brand" style={{ textDecoration: 'none' }}>
-            <div className="brand-badge" style={{ background: 'none', borderRadius: 0 }}>
-              <img
-                src="/hearts-in-hands.png"
-                alt="Hearts in Hands logo"
-                style={{ width: '60px', height: '46px', objectFit: 'contain' }}
-              />
-            </div>
-            <span style={{ fontWeight: 800, color: 'var(--burgundy)' }}>Hearts In Hands</span>
-          </a>
+          See ways to help
+        </a>
+        <a
+          href="#events"
+          className="px-4 py-2 rounded-xl border border-[var(--olive)]/40 text-[var(--olive)] bg-white/60 hover:bg-white shadow-sm hover:shadow transition-all"
+        >
+          Explore events
+        </a>
+      </div>
 
-          <nav className="nav">
-            <a href="#mission">Mission</a>
-            <a href="#team">Our team</a>
-            <a href="#events">Events</a>
-            <a href="#involved">Get Involved</a>
-            <a href="#contact">Contact</a>
-          </nav>
+      {/* tiny feature row */}
+      <div className="mt-6 grid grid-cols-3 gap-4 text-xs text-[var(--dark-olive)]/80">
+        <div className="flex items-center gap-2"><span>🤝</span><span>Volunteer-run</span></div>
+        <div className="flex items-center gap-2"><span>🌿</span><span>Community first</span></div>
+        <div className="flex items-center gap-2"><span>🎓</span><span>Student-led</span></div>
+      </div>
+    </div>
 
-          <div style={{ display: 'flex', gap: '.5rem' }}>
-            <a
-              className="btn btn-olive"
-              href="https://www.gofundme.com/f/help-us-raise-money-to-help-refugees-in-ottawa?attribution_id=sl:87e01799-18b3-4d2c-9cde-be42ab73a2f1&lang=en_CA&ts=1749045744&utm_campaign=fp_sharesheet&utm_content=amp13_t1-amp14_t2&utm_medium=customer&utm_source=copy_link&v=amp14_t2"
-            >
-              DONATE
-            </a>
-          </div>
+    {/* visual */}
+    <div className="justify-self-center">
+      {/* bigger frame so the PNG feels prominent */}
+      <div className="relative w-[260px] sm:w-[280px] md:w-[320px] aspect-square">
+        {/* glow halo */}
+        <div className="absolute -inset-6 rounded-full bg-gradient-to-tr from-[var(--pink)]/30 to-[var(--olive)]/20 blur-2xl" />
+        {/* inner plate */}
+        <div className="absolute inset-0 rounded-full border-[6px] border-white shadow-[0_10px_40px_rgba(0,0,0,.08)] bg-gradient-to-br from-white to-[var(--cream)]" />
+        {/* logo (absolute + grid ensures PERFECT centering) */}
+        <div className="absolute inset-0 z-10 grid place-items-center animate-[float_6s_ease-in-out_infinite]">
+          <img
+            src="/hearts-in-hands.png"
+            alt="Hearts in Hands logo"
+            className="w-[86%] md:w-[88%] aspect-square object-contain drop-shadow"
+          />
         </div>
-      </header>
-
-      {/* ===== Hero ===== */}
-      <section className="section alt" id="home">
-        <div className="container grid grid-2" style={{ alignItems: 'center' }}>
-          <div>
-            <span className="badge" style={{ background: 'var(--pink)' }}>
-              Community • Dignity • Care
-            </span>
-            <h1 className="h1" style={{ marginTop: '0.75rem' }}>
-              Holding hearts, lending hands.
-            </h1>
-            <p style={{ marginTop: '1rem' }}>
-              Hearts In Hands supports families, students and newcomers with practical help,
-              cultural celebration, and community led events rooted in compassion.
-            </p>
-            <div style={{ marginTop: '1rem', display: 'flex', gap: '.75rem', flexWrap: 'wrap' }}>
-              <a className="btn btn-olive" href="#involved">See ways to help</a>
-              <a className="btn btn-outline" href="#events">Explore events</a>
-            </div>
-          </div>
-
-          <div style={{ justifySelf: 'center' }}>
-            <div className="logo-ring">
-              <div className="logo-inner">
-                <img
-                  src="/hearts-in-hands.png"
-                  alt="Hearts in Hands logo"
-                  style={{ width: '220px', height: '230px', objectFit: 'contain' }}
-                />
-                <div className="logo-chip">HIH</div>
-              </div>
-            </div>
-          </div>
+        {/* badge */}
+        <div className="absolute -right-2 -bottom-2 rounded-full px-2 py-1 text-[10px] font-semibold bg-[var(--burgundy)] text-white shadow-sm">
+          HIH
         </div>
-      </section>
+        {/* tiny animated dots */}
+        <span className="absolute -top-1 left-8 w-3 h-3 rounded-full bg-[var(--pink)]/70 animate-pulse" />
+        <span className="absolute top-10 -left-2 w-2.5 h-2.5 rounded-full bg-[var(--olive)]/70 animate-pulse" />
+        <span className="absolute bottom-10 right-4 w-2 h-2 rounded-full bg-[var(--burgundy)]/60 animate-pulse" />
+      </div>
+    </div>
+  </div>
+</section>
+
+
+     
 
       {/* ===== Mission / About ===== */}
-      <section className="section" id="mission">
-        <div className="container grid" style={{ gridTemplateColumns: '1.2fr 1fr' }}>
-          <div className="card">
-            <h2 className="h2">Our Mission</h2>
-            <p style={{ marginTop: '.75rem' }}>
-              We build welcoming spaces and practical support systems so our neighbours can thrive —
+      <section className="py-10" id="mission">
+        <div className="container mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-6 px-4">
+          <div className="bg-white rounded-2xl p-5 shadow-sm border border-[#e6d3d9] hover:shadow-md hover:-translate-y-0.5 transition-all">
+            <h2 className="text-2xl md:text-3xl font-bold">Our Mission</h2>
+            <p className="mt-3">
+              We build welcoming spaces and practical support systems so our neighbours can thrive 
               from food & essentials to student mentorship and cultural programming that honours
               Palestinian heritage and the diversity of our community.
             </p>
-
-            <ul style={{ marginTop: '.75rem', paddingLeft: '1.25rem' }}>
+            <ul className="mt-3 list-disc pl-5 space-y-1">
               <li>Student & newcomer support</li>
               <li>Family essentials & dignity kits</li>
               <li>Cultural education & community events</li>
             </ul>
           </div>
 
-          <aside className="card" style={{ background: 'var(--olive)', color: '#fff' }}>
-            <p style={{ fontSize: '1.25rem', fontWeight: 700, margin: 0 }}>
-              “When hearts hold hands, communities heal.”
-            </p>
-            <p style={{ opacity: 0.9, marginTop: '.5rem' }}>— Hearts In Hands</p>
-          </aside>
+          <aside
+              className="rounded-2xl p-5 md:p-6 shadow-sm border border-[#e6d3d9] text-white hover:shadow-md hover:-translate-y-0.5 transition-all bg-[var(--olive)]"
+            >
+              <div className="flex items-center justify-between gap-3">
+                <p className="text-xl md:text-2xl font-bold m-0">Our Collaborations</p>
+                <span className="text-[10px] md:text-xs uppercase tracking-wide bg-white/15 px-2 py-1 rounded-full">
+                  Community Partners
+                </span>
+              </div>
+
+              {/* logos + labels (stacked, landscape logo area) */}
+                <div className="mt-4 grid grid-cols-1 gap-4">
+                  {/* Run for Palestine */}
+                  <div className="group flex items-center gap-4 rounded-xl bg-white/10 hover:bg-white/15 transition-colors p-4">
+                    {/* LANDSCAPE holder */}
+                    <div className="shrink-0 w-[220px] sm:w-[240px] aspect-[16/9] rounded-xl bg-white grid place-items-center overflow-hidden shadow ring-1 ring-white/40 p-2">
+                      <img
+                        src="/rpf.png"  /* use your landscape logo here */
+                        alt="Run for Palestine (Ottawa) logo"
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="font-semibold leading-tight text-base md:text-lg">Run for Palestine (Ottawa)</div>
+                      <div className="text-white/85 text-sm">Event collaboration</div>
+                    </div>
+                  </div>
+
+                  {/* OCISO Youth Program */}
+                    <div className="group flex items-center gap-4 rounded-xl bg-white/10 hover:bg-white/15 transition-colors p-4">
+                      {/* LANDSCAPE holder */}
+                      <div className="shrink-0 w-24 sm:w-28 md:w-32 aspect-square rounded-xl bg-white grid place-items-center overflow-hidden shadow ring-1 ring-white/40 p-2">
+                        <img
+                          src="/ociso-youth-program.png" // or 480x200 / 640x280
+                          alt="OCISO Youth Program logo"
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                      <div className="min-w-0">
+                        <div className="font-semibold leading-tight text-base md:text-lg">OCISO Youth Program</div>
+                        <div className="text-white/85 text-sm">Youth support partnership</div>
+                      </div>
+                    </div>
+
+                </div>
+
+            </aside>
+
         </div>
       </section>
 
       {/* ===== Events ===== */}
-      <section className="section alt" id="events">
-        <div className="container">
-          <h2 className="h2">Events</h2>
-          <div className="grid grid-3" style={{ marginTop: '1rem' }}>
+      <section className="py-10 bg-[var(--cream)]" id="events">
+        <div className="container mx-auto max-w-6xl px-4">
+          <h2 className="text-2xl md:text-3xl font-bold">Events</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
             {[
               {
                 title: 'STEM Workshops',
                 body: (
                   <>
-                    <p style={{ marginTop: '.75rem' }}>
+                    <p className="mt-3">
                       We bring science to life for kids through fun, hands-on activities:
                     </p>
-                    <ul style={{ marginTop: '.75rem', paddingLeft: '1.25rem' }}>
+                    <ul className="mt-3 list-disc pl-5 space-y-1">
                       <li>Egg Drop Challenge (for older kids)</li>
                       <li>DIY Water Filtration</li>
                       <li>Homemade Volcanoes (baking soda + vinegar reaction)</li>
@@ -134,11 +268,11 @@ export default function Page() {
                 title: 'Community Fundraising',
                 body: (
                   <>
-                    <p style={{ marginTop: '.75rem' }}>
+                    <p className="mt-3">
                       Our bake sales raise funds to create and distribute care packages. All
                       proceeds go toward materials and gifts for refugee children. We sell:
                     </p>
-                    <ul style={{ marginTop: '.75rem', paddingLeft: '1.25rem' }}>
+                    <ul className="mt-3 list-disc pl-5 space-y-1">
                       <li>Freshly baked cookies</li>
                       <li>Creamy knafeh cups</li>
                       <li>Dubai chocolate strawberries</li>
@@ -150,12 +284,12 @@ export default function Page() {
                 title: 'Care Packages ',
                 body: (
                   <>
-                    <p style={{ marginTop: '.75rem' }}>
+                    <p className="mt-3">
                       Each package includes fun and useful items for kids aged 5–12. We also
                       include personalized touches, stickers, and hand-packed gift bags with
                       handles. Examples:
                     </p>
-                    <ul style={{ marginTop: '.75rem', paddingLeft: '1.25rem' }}>
+                    <ul className="mt-3 list-disc pl-5 space-y-1">
                       <li>Writing tablets</li>
                       <li>Squishy toys</li>
                       <li>Rubik’s cubes</li>
@@ -165,9 +299,9 @@ export default function Page() {
                 ),
               },
             ].map((p) => (
-              <div key={p.title} className="card">
-                <strong style={{ color: 'var(--burgundy)' }}>{p.title}</strong>
-                <p style={{ marginTop: '.5rem' }}>{p.body}</p>
+              <div key={p.title} className="bg-white rounded-2xl p-5 shadow-sm border border-[#e6d3d9] hover:shadow-md hover:-translate-y-0.5 transition-all">
+                <strong className="text-[var(--burgundy)] underline decoration-transparent underline-offset-4 hover:decoration-[var(--burgundy)] transition-colors">{p.title}</strong>
+                <div className="mt-2">{p.body}</div>
               </div>
             ))}
           </div>
@@ -175,28 +309,29 @@ export default function Page() {
       </section>
 
       {/* ===== Team ===== */}
-      <section className="section" id="team">
-        <div className="container">
-          <h2 className="h2" style={{ textAlign: 'center' }}>Meet our co-founders</h2>
+      <section className="py-10" id="team">
+        <div className="container mx-auto max-w-6xl px-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-center">Meet our co-founders</h2>
 
           {/* Yasmine (image left, text right) */}
-          <div
-            className="grid"
-            style={{
-              gridTemplateColumns: '1fr 1.4fr',
-              gap: '1.25rem',
-              marginTop: '1.25rem',
-              alignItems: 'center',
-            }}
-          >
-            <div className="card" style={{ height: 300, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              {/* Replace with: <img src="/yasmine.jpg" alt="Yasmine" style={{ width:'100%', height:'100%', objectFit:'cover', borderRadius:'12px' }} /> */}
-              <span style={{ opacity: 0.7 }}>Pic</span>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.4fr] gap-5 mt-5 items-center">
+            {/* image */}
+            <figure className="relative w-full overflow-hidden rounded-2xl border border-[#e6d3d9] bg-[var(--cream)]/60 shadow-sm">
+              {/* soft glow (optional) */}
+              <div className="pointer-events-none absolute -inset-3 bg-gradient-to-tr from-[var(--pink)]/15 to-[var(--olive)]/10 blur-2xl" />
+              <img
+                src="/team/yasmine.png"
+                alt="Yasmine Yassine"
+                className="w-full h-full object-cover aspect-[4/5] md:aspect-[3/4]"
+                loading="lazy"
+              />
+              <figcaption className="sr-only">Yasmine Yassine</figcaption>
+            </figure>
 
+            {/* text */}
             <div>
-              <h3 className="h3" style={{ margin: 0 }}>Yasmine Yassine</h3>
-              <p style={{ marginTop: '.5rem' }}>
+              <h3 className="text-xl md:text-2xl font-bold m-0">Yasmine Yassine</h3>
+              <p className="mt-2 leading-relaxed">
                 Hi. I'm Yasmine, a 3rd year Translational and Molecular Medicine student at the
                 University of Ottawa. Growing up, I spent my summers visiting my family in Palestinian
                 refugee camps in Lebanon. Despite the resilience and strength of the people, I witnessed
@@ -211,19 +346,12 @@ export default function Page() {
             </div>
           </div>
 
+
           {/* Jenna (text left, image right) */}
-          <div
-            className="grid"
-            style={{
-              gridTemplateColumns: '1.4fr 1fr',
-              gap: '1.25rem',
-              marginTop: '1.5rem',
-              alignItems: 'center',
-            }}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr] gap-5 mt-6 items-center">
             <div>
-              <h3 className="h3" style={{ margin: 0 }}>Jenna Abu-Dieh</h3>
-              <p style={{ marginTop: '.5rem' }}>
+              <h3 className="text-xl md:text-2xl font-bold m-0">Jenna Abu-Dieh</h3>
+              <p className="mt-2 leading-relaxed">
                 Hi, my name is Jenna, and I’m in my third year at the University of Ottawa. Growing up,
                 I never had the chance to visit my home country, Palestine. I came to know it through the
                 stories, memories, and emotions my parents and grandparents shared; the love for a place
@@ -239,100 +367,82 @@ export default function Page() {
                 is and what could be, one child, one family, one heart at a time.
               </p>
             </div>
-
-            <div className="card" style={{ height: 300, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              {/* Replace with: <img src="/jenna.jpg" alt="Jenna" style={{ width:'100%', height:'100%', objectFit:'cover', borderRadius:'12px' }} /> */}
-              <span style={{ opacity: 0.7 }}>Pic</span>
+            <div className="h-[300px] rounded-2xl border border-[#e6d3d9] bg-[var(--cream)]/70 grid place-items-center [background-image:radial-gradient(circle_at_30%_30%,rgba(127,141,59,.07),transparent_40%)]">
+              <span className="opacity-70">Pic</span>
             </div>
           </div>
 
           {/* Divider */}
-          <hr style={{ margin: '2rem 0', borderColor: '#e6d3d9' }} />
+          <hr className="my-8 border-[#e6d3d9]" />
 
-          <h3 className="h2" style={{ textAlign: 'center' }}>The team</h3>
+          <h3 className="text-2xl md:text-3xl font-bold text-center">The team</h3>
 
-          {/* Team grid (centered cards) */}
-          <div
-      style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-        gap: '1rem',
-        marginTop: '1rem',
-        placeItems: 'center',
-      }}
-    >
-      {[
-        {
-          name: 'Arij Karoui',
-          role: 'Web Developer',
-          desc: "Hi! I'm Arij, a third-year Computer Science student.As a Tunisian who grew up in Canada, I understand what it's like to build a sense ofhome in a new place, and I want to help children feel that same comfort here too. I also love spending time with my family and getting lost in a good book."
-        },
-        {
-          name: 'Usva',
-          role: 'Social media manager',
-          desc: "Hi! I'm Usva & I'm a third year biomedical science student. I joined HIH to give back in a meaningful way and help spread positivity and support for those who need it most!Besides school I enjoy baking, painting & going on long walks."
-        },
-        {
-          name: 'Salma',
-          role: 'Event coordinator',
-          desc: "Hi! I'm a fourth-year Biomedical Science student at the University of Ottawa.When I'm not in lectures or hitting the books, I love exploring cozy cafes with a good read in hand. I'm also a big fan of jasmine milk tea and can never resist a goodK-drama binge ;)"
-        },
-        {
-          name: 'Heba',
-          role: 'Volunteer coordinator',
-          desc: 'tbd',
-        },
-      ].map((m) => (
-        <div
-          key={m.name}
-          className="card"
-          style={{
-            display: 'grid',
-            gap: '.5rem',
-            maxWidth: '280px',
-            justifyItems: 'center',
-            textAlign: 'center',
-          }}
-        >
-          <div
-            style={{
-              width: '100%',
-              aspectRatio: '1 / 1',
-              background: 'var(--cream)',
-              border: '1px solid #e6d3d9',
-              borderRadius: '12px',
-              display: 'grid',
-              placeItems: 'center',
-            }}
-          >
-            <span style={{ opacity: 0.6 }}>Pic</span>
-          </div>
-          <div>
-            <strong style={{ display: 'block' }}>{m.name}</strong>
-            <span style={{ display: 'block', opacity: 0.8 }}>{m.role}</span>
-            <p style={{ marginTop: '.35rem' }}>{m.desc}</p>
+          {/* Team grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4 place-items-center items-stretch">
+            {[
+              {
+                name: 'Arij Karoui',
+                role: 'Web Developer',
+                img: "/team/arij.png",
+                desc: "Hi! I'm Arij, a third-year Computer Science student. As a Tunisian who grew up in Canada, I understand what it's like to build a sense ofhome in a new place, and I want to help children feel that same comfort here too. I also love spending time with my family and getting lost in a good book.",
+              },
+              {
+                name: 'Usva Muhammad',
+                role: 'Social media manager',
+                img: "/team/usva.png",
+                desc: "Hi! I'm Usva & I'm a third year Biomedical Sciences student. I joined HIH to give back in a meaningful way and help spread support for those who need it most. I hope to help create an environment that helps underserved communities feel seen, appreciated, and valued.",
+              },
+              {
+                name: 'Salma Alsammak',
+                role: 'Event coordinator',
+                img: "/team/salma.png",
+                desc: "Hi! I'm a fourth-year Biomedical Science student at the University of Ottawa.When I'm not in lectures or hitting the books, I love exploring cozy cafes with a good read in hand. I'm also a big fan of jasmine milk tea and can never resist a goodK-drama binge ;)",
+              },
+              {
+                name: 'Heba Rafei',
+                role: 'Volunteer coordinator',
+                img: "/team/heba.png",
+                desc: 'Hi! I’m Heba, a second-year Biomedical Science student at uOttawa. I’m Lebanese and joined HIH to help families, students, and newcomers feel supported and welcomed, while building a sense of belonging in the community. Outside of school I enjoy shopping with friends, going to the gym and spending time with family. ',
+              },
+            ].map((m) => (
+              <div
+                  key={m.name}
+                  className="grid gap-2 max-w-[280px] justify-items-center text-center h-full rounded-2xl p-4 border border-[#e6d3d9] bg-white shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all"
+                >
+                  {/* image area */}
+                  <div className="w-full aspect-[4/5] rounded-xl overflow-hidden border border-[#e6d3d9] bg-[var(--cream)]/70">
+                    {m.img ? (
+                      <img
+                        src={m.img}
+                        alt={m.name}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="w-full h-full grid place-items-center text-[var(--dark-olive)]/60 text-sm">
+                        Pic
+                      </div>
+                    )}
+                  </div>
+
+                  {/* text */}
+                  <div>
+                    <strong className="block">{m.name}</strong>
+                    <span className="block opacity-80">{m.role}</span>
+                    <p className="mt-2">{m.desc}</p>
+                  </div>
+                </div>
+
+            ))}
           </div>
         </div>
-      ))}
-    </div>
-
-</div>
-
       </section>
 
       {/* ===== Get Involved ===== */}
-      <section className="section alt" id="involved">
-        <div className="container" style={{ textAlign: 'center' }}>
-          <h2 className="h2">Get involved</h2>
-          <div
-            style={{
-              marginTop: '1rem',
-              display: 'flex',
-              justifyContent: 'center',
-              gap: '2rem',
-              flexWrap: 'wrap',
-            }}
-          >
+      <section className="py-10 bg-[var(--cream)]" id="involved">
+        <div className="container mx-auto max-w-6xl px-4 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold">Get involved</h2>
+          <div className="mt-4 flex justify-center gap-8 flex-wrap">
             {[
               {
                 title: 'Volunteer',
@@ -350,18 +460,11 @@ export default function Page() {
             ].map((x) => (
               <div
                 key={x.title}
-                className="card"
-                style={{
-                  display: 'grid',
-                  gap: '.5rem',
-                  justifyItems: 'center',
-                  textAlign: 'center',
-                  maxWidth: '280px',
-                }}
+                className="grid gap-2 justify-items-center text-center max-w-[280px] rounded-2xl p-5 border border-[#e6d3d9] bg-white shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all"
               >
-                <strong style={{ color: 'var(--burgundy)' }}>{x.title}</strong>
+                <strong className="text-[var(--burgundy)]">{x.title}</strong>
                 <p>{x.body}</p>
-                <a className="btn btn-olive" href={x.href}>
+                <a className="btn btn-olive inline-flex items-center justify-center px-4 py-2 rounded-xl" href={x.href}>
                   {x.cta}
                 </a>
               </div>
@@ -370,66 +473,62 @@ export default function Page() {
         </div>
       </section>
 
-      {/* ===== Contact / Newsletter ===== */}
-      <section className="section" id="contact">
-        <div className="container grid grid-2">
-          <div>
-            <h2 className="h2">Stay in the loop</h2>
-            <p style={{ marginTop: '.5rem' }}>
-              Get monthly updates about drives, cultural events and volunteer shifts.
-            </p>
-            <form className="card" style={{ marginTop: '1rem' }} onSubmit={(e) => e.preventDefault()}>
-              <label>
-                Email
-                <input
-                  type="email"
-                  placeholder="you@example.com"
-                  required
-                  style={{
-                    display: 'block',
-                    width: '100%',
-                    marginTop: '.4rem',
-                    padding: '.6rem .8rem',
-                    borderRadius: '12px',
-                    border: '1px solid #e6d3d9',
-                  }}
-                />
-              </label>
-              <button className="btn btn-olive" style={{ marginTop: '0.75rem' }}>
-                Subscribe
-              </button>
-            </form>
-          </div>
+      
+            {/* ===== Contact Us ===== */}
+      <section id="contact" className="relative py-12">
+        {/* soft background accents (optional but subtle) */}
+        <div className="absolute inset-0 -z-10 pointer-events-none">
+          <div className="absolute -top-24 -left-24 w-64 h-64 rounded-full bg-[var(--pink)]/12 blur-3xl" />
+          <div className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-[var(--olive)]/12 blur-3xl" />
+        </div>
 
-          <div className="card">
-            <h2 className="h2" style={{ marginBottom: '.5rem' }}>Contact</h2>
-            <div style={{ display: 'grid', gap: '.5rem' }}>
-              <span>📧 hheartsinhands@gmail.com</span>
-              <span>📸 @heartsinhands</span>
-              <p style={{ marginTop: '.5rem', opacity: 0.9 }}>
-                Contact us by email and make sure to check us out on instagram.
-              </p>
-            </div>
+        <div className="site-container max-w-6xl px-4">
+          <h2 className="text-center text-2xl md:text-3xl font-extrabold
+                        bg-gradient-to-r from-[var(--burgundy)] to-[var(--pink)]
+                        bg-clip-text text-transparent">
+            Contact Us
+          </h2>
+
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {/* Email */}
+            <a
+              href="mailto:hheartsinhands@gmail.com"
+              className="group flex items-center justify-between rounded-2xl p-4
+                        border border-[#e6d3d9] bg-white shadow-sm hover:shadow-md
+                        transition-all hover:-translate-y-0.5"
+            >
+              <span className="flex items-center gap-3">
+                <span className="text-lg">📧</span>
+                <span className="font-medium">hheartsinhands@gmail.com</span>
+              </span>
+            </a>
+
+            {/* Instagram */}
+            <a
+              href="https://www.instagram.com/hheartsinhands/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-between rounded-2xl p-4
+                        border border-[#e6d3d9] bg-white shadow-sm hover:shadow-md
+                        transition-all hover:-translate-y-0.5"
+            >
+              <span className="flex items-center gap-3">
+                <span className="text-lg">📸</span>
+                <span className="font-medium">@heartsinhands</span>
+              </span>
+            </a>
           </div>
         </div>
       </section>
 
+
       {/* ===== Footer ===== */}
-      <footer className="footer">
-        <div
-          className="container"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '1rem',
-            flexWrap: 'wrap',
-          }}
-        >
+      <footer className="w-full border-t border-[#e6d3d9] bg-white/70 backdrop-blur">
+        <div className="container mx-auto max-w-6xl flex items-center justify-between gap-4 flex-wrap px-4 py-4 text-[var(--dark-olive)]/80">
           <span>© {new Date().getFullYear()} Hearts In Hands</span>
-          <div style={{ display: 'flex', gap: '.5rem', alignItems: 'center' }}>
-            <span className="badge">H.I.H.</span>
-            <a className="btn btn-olive" href="https://www.instagram.com/hheartsinhands/">Instagram</a>
+          <div className="flex gap-2 items-center">
+            <span className="inline-flex items-center rounded-full px-2 py-1 text-xs font-medium bg-white border border-[#e6d3d9]">H.I.H.</span>
+            <a className="btn btn-olive inline-flex items-center justify-center px-4 py-2 rounded-xl" href="https://www.instagram.com/hheartsinhands/">Instagram</a>
           </div>
         </div>
       </footer>
