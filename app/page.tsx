@@ -347,8 +347,22 @@ export default function Page() {
           </div>
 
 
-          {/* Jenna (text left, image right) */}
-          <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr] gap-5 mt-6 items-center">
+          {/* Jenna  (image left, text right) */}
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.4fr] gap-5 mt-5 items-center">
+            {/* image */}
+            <figure className="relative w-full overflow-hidden rounded-2xl border border-[#e6d3d9] bg-[var(--cream)]/60 shadow-sm">
+              {/* soft glow (optional) */}
+              <div className="pointer-events-none absolute -inset-3 bg-gradient-to-tr from-[var(--pink)]/15 to-[var(--olive)]/10 blur-2xl" />
+              <img
+                src="/team/jenna.png"
+                alt="Jenna Abu-Dieh"
+                className="w-full h-full object-cover aspect-[4/5] md:aspect-[3/4]"
+                loading="lazy"
+              />
+              <figcaption className="sr-only">Jenna Abu-Dieh</figcaption>
+            </figure>
+
+
             <div>
               <h3 className="text-xl md:text-2xl font-bold m-0">Jenna Abu-Dieh</h3>
               <p className="mt-2 leading-relaxed">
@@ -367,9 +381,7 @@ export default function Page() {
                 is and what could be, one child, one family, one heart at a time.
               </p>
             </div>
-            <div className="h-[300px] rounded-2xl border border-[#e6d3d9] bg-[var(--cream)]/70 grid place-items-center [background-image:radial-gradient(circle_at_30%_30%,rgba(127,141,59,.07),transparent_40%)]">
-              <span className="opacity-70">Pic</span>
-            </div>
+            
           </div>
 
           {/* Divider */}
